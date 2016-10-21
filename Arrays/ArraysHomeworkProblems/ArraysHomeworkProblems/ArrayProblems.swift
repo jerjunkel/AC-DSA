@@ -17,10 +17,14 @@ import Foundation
 func problemOne(arr: [Int]) -> [Int] {
     var newArray: [Int] = []
 
-    for num in 1..<arr.count{
-        newArray.append(arr[num])
+//    for num in 1..<arr.count{
+//        newArray.append(arr[num])
+//    }
+//    newArray.append(arr[0])
+    
+    for i in 1...arr.count{
+        newArray.append(arr[i%arr.count])
     }
-    newArray.append(arr[0])
     
     return newArray
 }
