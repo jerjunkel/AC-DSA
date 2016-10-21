@@ -15,7 +15,14 @@ import Foundation
 //Sample output: [1,2,3,4,5,0]
 
 func problemOne(arr: [Int]) -> [Int] {
-    return []
+    var newArray: [Int] = []
+
+    for num in 1..<arr.count{
+        newArray.append(arr[num])
+    }
+    newArray.append(arr[0])
+    
+    return newArray
 }
 
 
@@ -26,7 +33,15 @@ func problemOne(arr: [Int]) -> [Int] {
 //Sample output: [3,4,5,0,1,2]
 
 func problemTwo(arr: [Int], x: Int) -> [Int] {
-    return []
+    var newArray: [Int] = []
+    guard x <= arr.count else {return []}
+    
+    for num in x..<arr.count{
+        newArray.append(arr[num])
+    }
+    newArray += arr[0..<x]
+    
+    return newArray
 }
 
 //Write a function that accepts two strings, and returns true if one string is rotation of the other, taking letter case into account.
@@ -42,7 +57,8 @@ func problemTwo(arr: [Int], x: Int) -> [Int] {
 //Sample output 3: false
 
 func problemThree(strOne: String, strTwo: String) -> Bool {
-    return false
+    
+    return strOne.characters.first == strTwo.characters.first ? false:true
 }
 
 
@@ -63,7 +79,19 @@ func problemThree(strOne: String, strTwo: String) -> Bool {
 //|(1 + 5 + 9) - (3 + 5 + 11)| = |15 - 19| = |-4| = 4
 
 func problemFour(arr: [[Int]]) -> Int {
-    return 0
+    var firstDiagonalSum: Int = 0
+    var secondDiagonalSum: Int = 0
+    var absoluteValue:Int{
+        let value = firstDiagonalSum - secondDiagonalSum
+        return value < 0 ? value * -1 : value
+    }
+    
+    for i in 0..<arr.count{
+        firstDiagonalSum += arr[i][i]
+        secondDiagonalSum += arr[(arr.count - 1) - i][i]
+    }
+    
+    return absoluteValue
 }
 
 
@@ -84,6 +112,9 @@ func problemFour(arr: [[Int]]) -> Int {
 //|(4 + 1 + 3 + 3) - (5 + 9 + 1 + 9)| = |11 - 24| = |-13| = 13
 
 func problemFive(arr: [[Int]]) -> Int {
-    return 0
+    
+    //let absoluteValue = problemFour(arr: arr)
+    /*The previous function is able to achieve the same results*/
+    return problemFour(arr: arr)
 }
 
